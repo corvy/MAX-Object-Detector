@@ -19,12 +19,21 @@ FROM raspbian/stretch
 #ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 #ENV PATH /opt/conda/bin:$PATH
 
-RUN apt-get update && apt-get -y upgrade
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
+    && curl -sSL https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda3-2.0.0-Linux-armv7l.sh -o /tmp/berryconda.sh \
+    && bash /tmp/berryconda.sh -bfp /usr/local \
+    && rm -rf /tmp/berryconda.sh \
+    && conda install -y python=3 \
+    && conda update conda \
+    && apt-get -qq -y remove curl bzip2 \
+    && apt-get -qq -y autoremove \
+    && apt-get autoclean \
+    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
+    && conda clean --all --yes
 
-RUN cd /opt/ && wget https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda3-2.0.0-Linux-armv7l.sh && \
-    echo "running installer...." && \
-    /bin/bash /opt/Berryconda3-2.0.0-Linux-armv7l.sh -b -p /opt/conda && echo "cleaning up ..." && \
-    rm Berryconda3-2.0.0-Linux-armv7l.sh
+ENV PATH /opt/conda/bin:$PATH
+
 WORKDIR /workspace
 RUN mkdir assets
 
