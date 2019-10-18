@@ -19,6 +19,8 @@ FROM raspbian/stretch
 #ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 #ENV PATH /opt/conda/bin:$PATH
 
+RUN apt-get update && apt-get -y upgrade
+
 RUN cd /opt/ && wget https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda3-2.0.0-Linux-armv7l.sh && \
     chmod +x Berryconda3-2.0.0-Linux-armv7l.sh && echo "running installer...." && \
     ./Berryconda3-2.0.0-Linux-armv7l.sh -b -p /opt/conda && echo "cleaning up ..." && \
