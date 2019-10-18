@@ -14,7 +14,23 @@
 # limitations under the License.
 #
 
-FROM codait/max-base:v1.1.3
+FROM raspbian/stretch
+
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+ENV PATH /opt/conda/bin:$PATH
+
+RUN cd /opt/ && wget https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda3-2.0.0-Linux-armv7l.sh && \\
+    chmod +x Berryconda3* && Berryconda3-2.0.0-Linux-armv7l.sh -b -p /opt/conda
+
+WORKDIR /workspace
+RUN mkdir assets
+
+COPY requirements.txt /workspace
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+COPY . /workspace
+#FROM codait/max-base:v1.1.3
 
 ARG model_bucket=https://max-assets-prod.s3.us-south.cloud-object-storage.appdomain.cloud/max-object-detector/1.0.1
 ARG model_file=model.tar.gz
