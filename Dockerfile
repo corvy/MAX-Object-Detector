@@ -20,8 +20,7 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
 RUN cd /opt/ && wget https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda3-2.0.0-Linux-armv7l.sh && \\
-    chmod +x Berryconda3* && Berryconda3-2.0.0-Linux-armv7l.sh -b -p /opt/conda
-
+    chmod +x Berryconda3-2.0.0-Linux-armv7l.sh && ./Berryconda3-2.0.0-Linux-armv7l.sh -b -p /opt/conda && rm Berryconda3-2.0.0-Linux-armv7l.sh
 WORKDIR /workspace
 RUN mkdir assets
 
