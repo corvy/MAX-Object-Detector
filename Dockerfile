@@ -29,6 +29,7 @@ RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && apt-get -qq -y install libatlas-base-dev \
     && apt-get -qq -y install libhdf5-dev \
     && apt-get -qq -y install python-pip \
+    && apt-get -qq -y install python3-h5py \
     && apt-get -qq -y remove curl bzip2 \
     && apt-get -qq -y autoremove \
     && apt-get autoclean \
