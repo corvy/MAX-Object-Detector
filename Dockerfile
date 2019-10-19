@@ -39,10 +39,10 @@ WORKDIR /workspace
 RUN mkdir assets
 
 COPY requirements.txt /workspace
-RUN pip3 install --upgrade pip
-RUN pip3 install --upgrade six
-RUN pip3 install tensorflow
-RUN pip3 install -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --upgrade six
+RUN pip install tensorflow
+RUN pip install -r requirements.txt
 
 COPY . /workspace
 #FROM codait/max-base:v1.1.3
