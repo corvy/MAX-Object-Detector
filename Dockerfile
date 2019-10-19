@@ -40,6 +40,7 @@ RUN mkdir assets
 COPY requirements.txt /workspace
 RUN pip install --upgrade pip
 RUN pip install --upgrade six
+RUN pip3 install tensorflow
 RUN pip install -r requirements.txt
 
 COPY . /workspace
