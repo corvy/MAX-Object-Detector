@@ -40,11 +40,15 @@ ENV PATH /opt/conda/bin:$PATH
 WORKDIR /workspace
 RUN mkdir assets
 
-COPY requirements.txt /workspace
-RUN pip install --upgrade pip
-RUN pip install --upgrade six
-RUN pip install --upgrade tensorflow
-RUN pip install -r requirements.txt
+COPY . .
+RUN pip install --upgrade pip && pip install --upgrade six && pip install -r requirements.txt
+
+#COPY requirements.txt /workspace
+#RUN pip install --upgrade pip
+
+#RUN pip install --upgrade six
+#RUN pip install --upgrade tensorflow
+#RUN pip install -r requirements.txt
 
 COPY . /workspace
 #FROM codait/max-base:v1.1.3
