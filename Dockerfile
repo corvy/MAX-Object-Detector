@@ -26,7 +26,7 @@ RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && rm -rf /tmp/berryconda.sh \
     && conda install -y python=3 \
     && conda update conda \
-    && apt install libatlas-base-dev \   
+    && apt-get -qq -y install libatlas-base-dev \   
     && apt-get -qq -y remove curl bzip2 \
     && apt-get -qq -y autoremove \
     && apt-get autoclean \
