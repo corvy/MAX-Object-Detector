@@ -40,8 +40,8 @@ RUN mkdir assets
 COPY requirements.txt /workspace
 RUN pip install --upgrade pip
 RUN pip install --upgrade six
-RUN pip3 install tensorflow
-RUN pip install -r requirements.txt
+#RUN pip3 install tensorflow
+#RUN pip install -r requirements.txt
 
 COPY . /workspace
 #FROM codait/max-base:v1.1.3
@@ -65,7 +65,7 @@ RUN wget -nv --show-progress --progress=bar:force:noscroll https://github.com/IB
 RUN mv ./MAX-Object-Detector-Web-App-1.2/static static
 
 #COPY requirements.txt /workspace
-#RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . /workspace
 
