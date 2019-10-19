@@ -26,6 +26,7 @@ RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && rm -rf /tmp/berryconda.sh \
     && conda install -y python=3 \
     && conda update conda \
+    && apt install libatlas-base-dev \   
     && apt-get -qq -y remove curl bzip2 \
     && apt-get -qq -y autoremove \
     && apt-get autoclean \
@@ -38,10 +39,10 @@ WORKDIR /workspace
 RUN mkdir assets
 
 COPY requirements.txt /workspace
-RUN pip install --upgrade pip
-RUN pip install --upgrade six
-#RUN pip3 install tensorflow
-RUN python3 -m pip install -r requirements.txt
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade six
+RUN pip3 install tensorflow
+RUN pip3 install -r requirements.txt
 
 COPY . /workspace
 #FROM codait/max-base:v1.1.3
