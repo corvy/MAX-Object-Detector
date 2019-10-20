@@ -48,6 +48,7 @@ RUN mkdir assets
 
 COPY . .
 RUN apt-get update && apt-get -qq -y install cython
+RUN pup install --upgrade h5py
 RUN pip install --upgrade pip && pip install --upgrade six
 
 RUN pip install -r requirements.txt
