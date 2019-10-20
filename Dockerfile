@@ -27,6 +27,11 @@ RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && conda install -y python=3 \
     && conda update conda \
     && apt-get -qq -y install libatlas-base-dev \
+    && apt-get -qq -y install python-numpy \
+    && apt-get -qq -y install libblas-dev \
+    && apt-get -qq -y install liblapack-dev \
+    && apt-get -qq -y install python-dev \
+    && apt-get -qq -y install gfortran \
     && apt-get -qq -y install libhdf5-dev \
     && apt-get -qq -y install python-pip \
     && apt-get -qq -y install python-h5py \
@@ -43,9 +48,9 @@ RUN mkdir assets
 
 COPY . .
 RUN pip install --upgrade pip && pip install --upgrade six
-RUN pip install --upgrade tensorflow
-RUN pip install -r requirements.txt
 
+RUN pip install -r requirements.txt
+RUN pip install --upgrade tensorflow
 
 #COPY requirements.txt /workspace
 #RUN pip install --upgrade pip
