@@ -51,7 +51,7 @@ COPY . .
 # RUN apt-get update && apt-get -qq -y install cython
 
 RUN pip install --upgrade pip && pip install --upgrade six
-RUN pip install --upgrade h5py==2.9.0
+RUN pip install --upgrade h5py==2.6.0
 RUN pip install -r requirements.txt
 RUN pip install --upgrade tensorflow
 
