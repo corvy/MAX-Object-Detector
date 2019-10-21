@@ -51,8 +51,8 @@ COPY . .
 # RUN apt-get update && apt-get -qq -y install cython
 
 RUN pip install --upgrade pip && pip install --upgrade six
-RUN pip uninstall h5py
-RUN pip install h5py
+#RUN pip uninstall h5py
+RUN conda install h5py
 RUN pip install -r requirements.txt
 RUN pip install --upgrade tensorflow
 
