@@ -33,6 +33,7 @@ RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && apt-get -qq -y install python-dev \
     && apt-get -qq -y install gfortran \
     && apt-get -qq -y install libhdf5-dev \
+    && apt-get -qq -y install libhdf5-serial-dev \
     && apt-get -qq -y install python-pip \
     && apt-get -qq -y install python-h5py \
     && apt-get -qq -y remove curl bzip2 \
