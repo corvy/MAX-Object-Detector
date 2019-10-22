@@ -15,7 +15,7 @@
 #
 
 #FROM raspbian/stretch
-FROM debian:stretch
+FROM debian:stretch-slim
 
 #ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 #ENV PATH /opt/conda/bin:$PATH
