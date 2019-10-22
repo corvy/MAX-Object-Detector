@@ -53,7 +53,8 @@ RUN mkdir assets
 COPY . .
 
 RUN apt-get update \
-    && apt-get -qq -y install python-pip \
+    && wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py \
+#    && apt-get -qq -y install python-pip \
     && apt-get -qq -y autoremove \
     && apt-get autoclean \
     && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
