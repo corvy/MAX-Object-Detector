@@ -62,7 +62,9 @@ RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-p
 RUN pip install --upgrade pip && pip install --upgrade six \
     && conda install h5py && conda install numpy \
     && pip install -r requirements.txt
-    
+
+RUN pip install --upgrade tensorflow    
+
 #RUN pip install --upgrade tensorflow
 #COPY requirements.txt /workspace
 #RUN pip install --upgrade pip
