@@ -59,8 +59,8 @@ RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-p
 #    && apt-get autoclean \
 #    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
     
-RUN pip install --upgrade pip && pip install --upgrade six \
-    && conda install h5py \
+RUN pip install --upgrade pip && pip install --upgrade six
+RUN conda install h5py \
     && conda install numpy \
     && conda install maxfw \
     && conda install Pillow \
