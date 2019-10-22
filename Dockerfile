@@ -45,7 +45,7 @@ FROM oneoffcoder/rpi-miniconda:latest
 #    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
 #    && conda clean --all --yes
 
-#ENV PATH /opt/conda/bin:$PATH
+ENV PATH /opt/conda/bin:$PATH
 
 WORKDIR /workspace
 RUN mkdir assets
