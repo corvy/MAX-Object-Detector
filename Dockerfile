@@ -39,7 +39,7 @@ RUN /bin/bash /tmp/berryconda.sh -bfp /usr/local \
 #    && apt-get -qq -y install libhdf5-serial-dev \
 #    && apt-get -qq -y install python-pip \
 #    && apt-get -qq -y install python-h5py \
-    && apt-get -qq -y remove curl bzip2 \
+#    && apt-get -qq -y remove curl bzip2 \
     && apt-get -qq -y autoremove \
     && apt-get autoclean \
     && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
