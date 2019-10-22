@@ -14,13 +14,14 @@
 # limitations under the License.
 #
 
-FROM raspbian/stretch
+#FROM raspbian/stretch
+FROM debian:stretch-slim
 
 #ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 #ENV PATH /opt/conda/bin:$PATH
 
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
-RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils \
+    && apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && curl -sSL https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda3-2.0.0-Linux-armv7l.sh -o /tmp/berryconda.sh \
     && bash /tmp/berryconda.sh -bfp /usr/local \
     && rm -rf /tmp/berryconda.sh \
@@ -50,15 +51,13 @@ RUN mkdir assets
 COPY . .
 # RUN apt-get update && apt-get -qq -y install cython
 
-RUN pip install --upgrade pip && pip install --upgrade six
-#RUN pip uninstall h5py
-RUN conda install h5py && conda install numpy
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip && pip install --upgrade six \
+    && conda install h5py && conda install numpy \
+    && pip install -r requirements.txt
+    
 #RUN pip install --upgrade tensorflow
-
 #COPY requirements.txt /workspace
 #RUN pip install --upgrade pip
-
 #RUN pip install --upgrade six
 #RUN pip install --upgrade tensorflow
 #RUN pip install -r requirements.txt
@@ -77,7 +76,7 @@ RUN if [ "$use_pre_trained_model" = "true" ] ; then\
     wget -nv --show-progress --progress=bar:force:noscroll ${model_bucket}/${model_file} --output-document=assets/${model_file} && \
            tar -x -C assets/ -f assets/${model_file} -v && rm assets/${model_file} && \
     wget -nv --show-progress --progress=bar:force:noscroll ${model_bucket}/${data_file} --output-document=assets/${data_file} && \
-           tar -x -C assets/ -f assets/${data_file} -v && rm assets/${data_file}; fi
+           tar -x -C assets/ -f assets/${data_file} -v && rm assets/${data_file}; fi 
 
 RUN wget -nv --show-progress --progress=bar:force:noscroll https://github.com/IBM/MAX-Object-Detector-Web-App/archive/v1.2.tar.gz && \
   tar -xf v1.2.tar.gz && rm v1.2.tar.gz
