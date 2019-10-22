@@ -51,8 +51,13 @@ WORKDIR /workspace
 RUN mkdir assets
 
 COPY . .
-# RUN apt-get update && apt-get -qq -y install cython
 
+RUN apt-get update \
+    && apt-get -qq -y install python-pip \
+    && apt-get -qq -y autoremove \
+    && apt-get autoclean \
+    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
+    
 RUN pip install --upgrade pip && pip install --upgrade six \
     && conda install h5py && conda install numpy \
     && pip install -r requirements.txt
