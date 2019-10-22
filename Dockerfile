@@ -23,10 +23,9 @@ FROM debian:stretch-slim
 #ENV PATH /opt/conda/bin:$PATH
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils \
-    && apt-get -qq update && apt-get -qq -y install curl bzip2 \
-    && apt-get -qq -y install libc6-armhf-cross && ldconfig \
-    && curl -sSL https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda3-2.0.0-Linux-armv7l.sh -o /tmp/berryconda.sh \
-    && bash /tmp/berryconda.sh -bfp /usr/local \
+    && apt-get -qq -y install curl bzip2 \
+    && curl -sSL https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda3-2.0.0-Linux-armv7l.sh -o /tmp/berryconda.sh
+RUN /bin/bash /tmp/berryconda.sh -bfp /usr/local \
     && rm -rf /tmp/berryconda.sh \
     && conda install -y python=3 \
     && conda update conda \
