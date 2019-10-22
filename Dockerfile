@@ -52,7 +52,7 @@ COPY . .
 
 RUN pip install --upgrade pip && pip install --upgrade six
 #RUN pip uninstall h5py
-RUN conda install h5py
+RUN conda install h5py && conda install numpy
 RUN pip install -r requirements.txt
 RUN pip install --upgrade tensorflow
 
