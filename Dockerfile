@@ -35,10 +35,10 @@ RUN /bin/bash /tmp/berryconda.sh -bfp /usr/local \
     && apt-get -qq -y install liblapack-dev \
     && apt-get -qq -y install python-dev \
     && apt-get -qq -y install gfortran \
-    && apt-get -qq -y install libhdf5-dev \
-    && apt-get -qq -y install libhdf5-serial-dev \
-    && apt-get -qq -y install python-pip \
-    && apt-get -qq -y install python-h5py \
+#    && apt-get -qq -y install libhdf5-dev \
+#    && apt-get -qq -y install libhdf5-serial-dev \
+#    && apt-get -qq -y install python-pip \
+#    && apt-get -qq -y install python-h5py \
     && apt-get -qq -y remove curl bzip2 \
     && apt-get -qq -y autoremove \
     && apt-get autoclean \
@@ -52,12 +52,12 @@ RUN mkdir assets
 
 COPY . .
 
-RUN apt-get update \
-    && wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py \
+#RUN apt-get update \
+RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py 
 #    && apt-get -qq -y install python-pip \
-    && apt-get -qq -y autoremove \
-    && apt-get autoclean \
-    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
+#    && apt-get -qq -y autoremove \
+#    && apt-get autoclean \
+#    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
     
 RUN pip install --upgrade pip && pip install --upgrade six \
     && conda install h5py && conda install numpy \
