@@ -60,13 +60,7 @@ RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-p
 #    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
     
 RUN pip install --upgrade pip && pip install --upgrade six
-RUN conda install h5py \
-    && conda install numpy \
-    && conda install maxfw \
-    && conda install Pillow \
-    && conda install google \
-    && conda install pyresistent \
-    && conda install MarkupSafe \
+RUN conda install -y six h5py Pillow markupsafe \
     && pip install -r requirements.txt
 
 RUN pip install --upgrade tensorflow    
