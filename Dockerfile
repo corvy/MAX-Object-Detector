@@ -60,13 +60,13 @@ RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-p
 #    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
     
 # RUN pip install --upgrade pip && pip install --upgrade six
-RUN conda install -y six h5py Pillow markupsafe \
-    && pip install -r requirements.txt
+#RUN conda install -y six h5py Pillow markupsafe \
+RUN pip install -r requirements.txt
 
-#RUN pip install --upgrade tensorflow    
-RUN curl -sSL https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.0.0/tensorflow-2.0.0-cp37-none-linux_armv7l.whl -o tensorflow-2.0.0-cp37-none-linux_armv7l.whl \
-    && pip install ./tensorflow-2.0.0-cp37-none-linux_armv7l.whl \
-    && rm tensorflow-2.0.0-cp37-none-linux_armv7l.whl
+RUN pip install --upgrade tensorflow    
+#RUN curl -sSL https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.0.0/tensorflow-2.0.0-cp37-none-linux_armv7l.whl -o tensorflow-2.0.0-cp37-none-linux_armv7l.whl \
+#    && pip install ./tensorflow-2.0.0-cp37-none-linux_armv7l.whl \
+#    && rm tensorflow-2.0.0-cp37-none-linux_armv7l.whl
 
 #COPY requirements.txt /workspace \
 #RUN pip install --upgrade tensorflow
