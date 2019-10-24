@@ -64,7 +64,7 @@ RUN conda install -y six h5py Pillow markupsafe \
     && pip install -r requirements.txt
 
 #RUN pip install --upgrade tensorflow    
-RUN curl -sSL https://files.pythonhosted.org/packages/46/0f/7bd55361168bb32796b360ad15a25de6966c9c1beb58a8e30c01c8279862/tensorflow-2.0.0-cp36-cp36m-manylinux2010_x86_64.whl -o tensorflow.whl
+RUN curl -sSL https://files.pythonhosted.org/packages/46/0f/7bd55361168bb32796b360ad15a25de6966c9c1beb58a8e30c01c8279862/tensorflow-2.0.0-cp36-cp36m-manylinux2010_x86_64.whl -o tensorflow.whl \
     && pip install tensorflow.whl \
     && rm tensorflow.whl
 
