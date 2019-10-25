@@ -60,6 +60,7 @@ RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-p
 #    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
     
 # RUN pip install --upgrade pip && pip install --upgrade six
+RUN pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
 RUN conda install -y six h5py Pillow markupsafe
 RUN pip install -r requirements.txt
 
