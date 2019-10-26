@@ -61,7 +61,7 @@ RUN curl --insecure -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && p
     
 # RUN pip install --upgrade pip && pip install --upgrade six
 #RUN pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
-RUN conda install -y six h5py Pillow markupsafe
+RUN conda install -y six h5py Pillow markupsafe numpy
 RUN pip install -r requirements.txt
 
 #RUN apt-get update && apt-get install python3
