@@ -64,6 +64,7 @@ RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-p
 #RUN conda install -y six h5py Pillow markupsafe
 #RUN pip install -r requirements.txt
 
+RUN apt-get install python3
 RUN pip install --upgrade wheel
 RUN pip install --upgrade pip
 RUN pip install --upgrade tensorflow    
