@@ -53,7 +53,7 @@ RUN mkdir assets
 COPY . .
 
 #RUN apt-get update \
-RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py && rm get-pip.py 
+RUN curl --insecure -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py && rm get-pip.py 
 #    && apt-get -qq -y install python-pip \
 #    && apt-get -qq -y autoremove \
 #    && apt-get autoclean \
