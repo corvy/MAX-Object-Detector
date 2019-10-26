@@ -15,7 +15,7 @@
 #
 
 #FROM raspbian/stretch
-FROM debian:stretch-slim
+FROM debian:buster-slim
 #FROM oneoffcoder/rpi-miniconda:latest
 
 
@@ -61,12 +61,12 @@ RUN curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-p
     
 # RUN pip install --upgrade pip && pip install --upgrade six
 #RUN pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
-#RUN conda install -y six h5py Pillow markupsafe
-#RUN pip install -r requirements.txt
+RUN conda install -y six h5py Pillow markupsafe
+RUN pip install -r requirements.txt
 
-RUN apt-get update && apt-get install python3
-RUN pip install --upgrade wheel
-RUN pip install --upgrade pip
+#RUN apt-get update && apt-get install python3
+#RUN pip install --upgrade wheel
+#RUN pip install --upgrade pip
 RUN pip install --upgrade tensorflow    
 #RUN curl -sSL https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.0.0/tensorflow-2.0.0-cp37-none-linux_armv7l.whl -o tensorflow-2.0.0-cp37-none-linux_armv7l.whl \
 #    && pip install ./tensorflow-2.0.0-cp37-none-linux_armv7l.whl \
