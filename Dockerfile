@@ -68,7 +68,10 @@ RUN pip install -r requirements.txt
 #RUN pip install --upgrade wheel
 #RUN pip install --upgrade pip
 RUN python --version
-RUN python3 -m pip install tensorflow    
+RUN curl --insecure -sSL  https://github.com/PINTO0309/Tensorflow-bin/raw/master/tensorflow-2.0.0-cp37-cp37m-linux_armv7l.whl -o tensorflow-2.0.0-cp37-cp37m-linux_armv7l.whl \
+    && pip install tensorflow-2.0.0-cp37-cp37m-linux_armv7l.whl \
+    && rm tensorflow-2.0.0-cp37-cp37m-linux_armv7l.whl
+#RUN python3 -m pip install tensorflow    
 #RUN curl -sSL https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.0.0/tensorflow-2.0.0-cp37-none-linux_armv7l.whl -o tensorflow-2.0.0-cp37-none-linux_armv7l.whl \
 #    && pip install ./tensorflow-2.0.0-cp37-none-linux_armv7l.whl \
 #    && rm tensorflow-2.0.0-cp37-none-linux_armv7l.whl
